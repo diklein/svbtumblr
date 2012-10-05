@@ -10,11 +10,15 @@
     {/block:Description}
 
     <meta name="color:Theme Color" content="#ff0000"/>
-    <meta name="text:your URL" content="yoururl.com"/>
+    <meta name="text:Your URL" content="yoururl.com"/>
     <meta name="text:Twitter Username" content="username"/>
     <meta name="text:Say Hello" content="your@email.com"/>
     <meta name="image:Logo" content="http://static.tumblr.com/v96djat/zWLm2dswt/tumblricon3.png"/>
-    <link rel="stylesheet" href="http://static.tumblr.com/f6quix5/WCUmbbi7v/style.css" media="screen"/>
+    <meta name="text:Google Analytics Code" content=""/>
+    <meta name="text:Google Plus Link" content=""/>
+    <meta name="text:Authors Name" content=""/>
+
+    <link rel="stylesheet" href="http://static.tumblr.com/f6quix5/Dedmbfr36/style.css" media="screen"/>
 
 <style type="text/css">
 
@@ -61,9 +65,15 @@
 		<h1 id="user"><a href="/" class="">{Title}</a></h1>
 		<h2>{Description}</h2>
 		<ul id="linkbar">
-			<li><a href="{text:your URL}">{text:your URL}</a></li>
+            {block:IfYourURL}
+	           <li><a href="{text:your URL}">{text:your URL}</a></li>
+            {/block:IfYourURL}
+            {block:IfTwitterUsername}
 			<li><a href="http://twitter.com/{Twitter Username}">@{text:Twitter Username}</a></li>
+            {/block:IfTwitterUsername}
+            {block:IfSayHello}
 			<li><a href="mailto:{text:Say Hello}?subject=hi">say hello</a></li>
+            {/block:IfSayHello}
 			<li><a href="{RSS}">rss feed</a></li>
 		</ul>
 		<a href="http://diklein.com" class="network_link">Adapted for Tumblr by <span>David Klein</span>.</a>
@@ -167,6 +177,17 @@
                 <p class="count">{NoteCount} <span class="identifier">Notes</span></p></a>
             </article>
         {/block:Audio}
+
+        {block:PermalinkPage}
+            {block:IfGooglePlusLink}
+                {block:IfAuthorsName}
+                    <div class="author">
+                        by <a href="{text:Google Plus Link}" rel="author">{text:Authors Name}</a>
+                    </div>
+                {/block:IfAuthorsName}
+            {/block:IfGooglePlusLink}
+        {/block:PermalinkPage}
+
     {/block:Posts}
 	<footer id="paginate">
     	<a href="/" class="back_to_blog" id="backbutton">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
@@ -193,5 +214,18 @@
          backbutton.className += ' showback_to_blog';
     }
 </script>
+
+{block:IfGoogleAnalyticsCode}
+    <script type="text/javascript">
+        var _gaq=[["_setAccount","{text:Google Analytics Code}"],["_trackPageview"]];
+        (function(d,t){
+            var g=d.createElement(t), s=d.getElementsByTagName(t)[0];
+            g.async=1;
+            g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+            s.parentNode.insertBefore(g,s)
+        }(document,"script"));
+    </script>
+{/block:IfGoogleAnalyticsCode}
+
 </body>
 </html>

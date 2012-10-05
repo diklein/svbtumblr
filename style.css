@@ -18,6 +18,11 @@ body,button,input,select,textarea {
     font-family:sans-serif;
     color:#222
 }
+
+.author{margin-left: 50px;margin-bottom:20px}
+.author, .author a{font-style: italic;font-size: 12px;color: #888;}
+.author a{border-bottom: 1px solid #444}
+
 ::-moz-selection {
     color:#fff;
     text-shadow:none
